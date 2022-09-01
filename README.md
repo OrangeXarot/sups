@@ -1,4 +1,4 @@
-#sups
+# sups
 (SiteUPdateS)
 Page Updates Checker
 
