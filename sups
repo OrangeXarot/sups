@@ -27,7 +27,7 @@ echo ""
 
 if [ -z "$2" ]
 then
-    delay=600
+    delay=3600
 else
     delay=$2
 fi
