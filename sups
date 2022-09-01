@@ -1,31 +1,67 @@
 #!/bin/bash
 
-echo "first check"
+## colors
+red="\e[1;31m"
+green="\e[1;32m"
+brown="\e[1;33m" # (Yellow)
+blue="\e[1;34m"  # (Orange)
+violet="\e[1;35m"
+cyan="\e[1;36m"
+colnull="\e[0m"
+
+## Wallart
+
+echo "   ▄████████ ███    █▄     ▄███████▄    ▄████████ "
+echo "  ███    ███ ███    ███   ███    ███   ███    ███ "
+echo "  ███    █▀  ███    ███   ███    ███   ███    █▀  "
+echo "  ███        ███    ███   ███    ███   ███        "
+echo "▀███████████ ███    ███ ▀█████████▀  ▀███████████ "
+echo "         ███ ███    ███   ███                 ███ "
+echo "   ▄█    ███ ███    ███   ███           ▄█    ███ "
+echo " ▄████████▀  ████████▀   ▄████▀       ▄████████▀  "
+echo ""
+echo ""
+
+## Code
+
+
+if [ -z "$2" ]
+then
+    delay=600
+else
+    delay=$2
+fi
+
+
+echo -e "$blue[?]$colnull First Check..."
+echo -en "$brown[i]$colnull "
+date
 sha1=$(curl -s "$1" | sha512sum)
-echo "$sha1"
+echo -e "$brown[i]$colnull Sha: $sha1"
 while [ 1 ];
 do
-	echo ""
-	echo ""
-	echo "rechecking..."
-	date
+    echo ""
+	echo -e "$blue[?]$colnull Starting Recheck..."
+	echo -en "$brown[i]$colnull "
+    date
 	sha2=$(curl -s "$1" | sha512sum)
-	echo "$sha2"
+	echo -e "$brown[i]$colnull Sha: $sha2"
 	if [ "$sha1" != "$sha2" ]
 	then
-		echo "double checking..."
+		echo -e "$blue[?]$colnull Double Checking"
 		sleep 5
 		check=$(curl -s "$1" | sha512sum)
-		if [ "$check" == "$sha1"]
+		if [ "$check" == "$sha1" ]
 		then
-			echo ""
-			echo "probably bad response"
+			echo -e "$red[!]$colnull Was probably a bad response"
+            echo -e "$red[!]$colnull Nothing changed"
+            sha2="$check"
 		else
-			echo ""
-			echo "SITO AGGIORNATO!"
-			date
+			echo -e "$green[!]$colnull THE SITE WAS UPDATED"
 		fi
+    else
+        echo -e "$red[!]$colnull Nothing changed"
 	fi
 	sha1="$sha2"
-	sleep 600
+	sleep $delay
 done

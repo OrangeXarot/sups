@@ -2,4 +2,4 @@
 
 Page Updates Checker
 
-Usage: `./sups <site>`
+Usage: `./sups <site> [pptional time delay]`
