@@ -33,6 +33,12 @@ else
 fi
 
 
+if [ -z "$1" ]
+then
+    echo -e "$red[!]$colnull Empty Arguments"
+    exit 0
+fi
+
 echo -e "$blue[?]$colnull First Check..."
 echo -en "$brown[i]$colnull "
 date
