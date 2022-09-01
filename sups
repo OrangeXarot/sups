@@ -41,7 +41,7 @@ fi
 
 echo -e "$blue[?]$colnull First Check..."
 echo -en "$brown[i]$colnull"
-date "+ %d/%m/%y %H/%M/%S"
+date "+ %d/%m/%y %H:%M:%S"
 sha1=$(curl -s "$1" | sha512sum)
 echo -e "$brown[i]$colnull Sha: $sha1"
 while [ 1 ];
@@ -49,7 +49,7 @@ do
     echo ""
 	echo -e "$blue[?]$colnull Starting Recheck..."
 	echo -en "$brown[i]$colnull"
-    date "+ %d/%m/%y %H/%M/%S"
+    date "+ %d/%m/%y %H:%M:%S"
 	sha2=$(curl -s "$1" | sha512sum)
 	echo -e "$brown[i]$colnull Sha: $sha2"
 	if [ "$sha1" != "$sha2" ]
