@@ -1,6 +1,5 @@
 # sups
-(SiteUPdateS)
-Page Updates Checker
+Page Updates Checker (SiteUPdateS)
 
 Usage: `./sups <site> [time delay]`
 
