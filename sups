@@ -63,7 +63,7 @@ do
             echo -e "$red[!]$colnull Nothing changed"
             sha2="$check"
 		else
-			echo -e "$green[!]$colnull THE SITE WAS UPDATED"
+			echo -e "$green[!] THE SITE WAS UPDATED$colnull"
 		fi
     else
         echo -e "$red[!]$colnull Nothing changed"
